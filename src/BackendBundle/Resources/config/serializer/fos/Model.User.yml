@@ -1,0 +1,9 @@
+FOS\UserBundle\Entity\User:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      groups: [usersummery]
+    email:
+      expose: true
+      groups: [ usersummeryedit , usersummery]

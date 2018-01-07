@@ -1,0 +1,53 @@
+notifications:
+    resource: "@NotificationsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+o_auth:
+    resource: "@OAuthBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+
+
+backend_reply_api:
+    resource: "@BackendBundle/Controller/ReplyRESTController.php"
+    type:   rest
+    prefix:   /api
+
+backend_user.link_api:
+    resource: "@BackendBundle/Controller/User_LinkRESTController.php"
+    type:   rest
+    prefix:   /api
+
+backend_user_api:
+    resource: "@BackendBundle/Controller/UserRESTController.php"
+    type:   rest
+    prefix:   /api
+    
+backend_message_api:
+    resource: "@BackendBundle/Controller/MessageRESTController.php"
+    type: rest
+    prefix:   /api
+    
+backend_post_api:
+    resource: "@BackendBundle/Controller/PostRESTController.php"
+    type:   rest
+    prefix:   /api
+
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /optional_routing_prefix
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

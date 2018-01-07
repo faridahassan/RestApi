@@ -1,0 +1,10 @@
+backend_founder:
+    resource: "@BackendBundle/Resources/config/routing/founder.yml"
+    prefix:   /index
+
+#rest_security:
+#    type: rest
+#    resource: BackendBundle\Controller\SecurityController
+
+# fos_user:
+#       resource: "@FOSUserBundle/Resources/config/routing/all.xml"

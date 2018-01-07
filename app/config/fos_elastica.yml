@@ -1,0 +1,16 @@
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        reciprocas:
+            types:
+                user:
+                    mappings:
+                        username: ~
+                    persistence:
+                        driver: orm
+                        model: BackendBundle\Entity\User
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~

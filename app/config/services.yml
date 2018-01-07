@@ -1,0 +1,55 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+   reciprocasrest.backendbundle.invitationManager:
+     class: BackendBundle\BusinessManager\InvitationManager
+     arguments: 
+        mailer: "@mailer"
+   reciprocasrest.backendbundle.mailingManager:
+     class: BackendBundle\BusinessManager\MailingManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+        mailer: "@mailer"
+        templating: "@templating"
+        SecurityContext: "@security.context"
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.backendbundle.newsFeedManager:
+     class: BackendBundle\BusinessManager\NewsFeedManager
+     arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+        SecurityContext: "@security.context"
+   reciprocasrest.backendbundle.topEnterpreneursManager:
+     class: BackendBundle\BusinessManager\TopEnterpreneursManager
+     arguments:
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.backendbundle.pointManager:
+     class: BackendBundle\BusinessManager\PointManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.backendbundle.requestManager:
+     class: BackendBundle\BusinessManager\RequestManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.backendbundle.responseManager:
+     class: BackendBundle\BusinessManager\ResponseManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.backendbundle.searchManager:
+     class: BackendBundle\BusinessManager\SearchManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.backendbundle.userManager:
+     class: BackendBundle\BusinessManager\UserManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+   reciprocasrest.notificationsbundle.notificationManager:
+     class: NotificationsBundle\BusinessManager\NotificationManager
+     arguments: 
+        entityManager: "@doctrine.orm.entity_manager"
+        mailingManager: "@reciprocasrest.backendbundle.mailingManager"

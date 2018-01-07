@@ -1,0 +1,46 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        oauth_token:
+                pattern:    ^/oauth/v2/token
+                security:   false
+        oauth_authorize:
+            pattern:    ^/oauth/v2/auth
+            form_login:
+                provider: fos_userbundle
+                check_path: _security_check
+                # login_path: _demo_login
+            # anonymous: true
+        api:
+            pattern:    ^/api
+            fos_oauth:  true
+            stateless:  true
+            anonymous:  true # change to false so users must be authenticated
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                always_use_default_target_path: true
+                default_target_path: /index
+               # csrf_provider: security.csrf.token_manager
+            # logout:      
+            #    target: /login 
+            logout: true
+            anonymous:    true
+    access_control:
+        - { path: ^/index, role: ROLE_USER }

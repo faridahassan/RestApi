@@ -1,0 +1,10 @@
+founder:
+    path:     /
+    defaults: { _controller: "BackendBundle:Founder:index" }
+
+founder_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Founder:show" }
+
+
+

@@ -1,0 +1,18 @@
+FOS\MessageBundle\Entity\Message:
+  exclusion_policy: ALL
+  properties:
+   
+    body:
+      expose: true
+      groups: [message]
+    
+
+
+
+
+
+    
+
+
+
+

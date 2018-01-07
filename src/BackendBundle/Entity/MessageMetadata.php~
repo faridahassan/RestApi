@@ -1,0 +1,49 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of MessageMetadata
+ *
+ * @author Farida
+ */
+namespace BackendBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use FOS\MessageBundle\Entity\MessageMetadata as BaseMessageMetadata;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
+/**
+ * @ORM\Entity
+ */
+class MessageMetadata extends BaseMessageMetadata
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(
+     *   targetEntity="BackendBundle\Entity\Message",
+     *   inversedBy="metadata"
+     * )
+     * @var \FOS\MessageBundle\Model\MessageInterface
+     * @Groups({"message"})
+     */
+    protected $message;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\User")
+     * @var \FOS\MessageBundle\Model\ParticipantInterface
+     * @Groups({"message"})
+     */
+    protected $participant;
+}
